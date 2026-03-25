@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Learn | ResQMap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#d9d9e3",
+              "on-primary-fixed": "#001b3d",
+              "surface-bright": "#faf8ff",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "surface": "#faf8ff",
+              "secondary-fixed": "#ffdad6",
+              "on-surface": "#191b22",
+              "on-error-container": "#93000a",
+              "inverse-surface": "#2e3038",
+              "surface-container": "#ededf7",
+              "secondary-container": "#da3433",
+              "on-secondary-fixed": "#410003",
+              "tertiary": "#005412",
+              "surface-container-low": "#f2f3fd",
+              "secondary-fixed-dim": "#ffb3ac",
+              "on-tertiary-container": "#9bee94",
+              "background": "#faf8ff",
+              "primary-fixed": "#d6e3ff",
+              "primary-fixed-dim": "#a9c7ff",
+              "on-secondary-container": "#fffbff",
+              "on-tertiary-fixed-variant": "#005312",
+              "primary-container": "#005eb8",
+              "on-surface-variant": "#424752",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#c8daff",
+              "inverse-primary": "#a9c7ff",
+              "outline-variant": "#c2c6d4",
+              "surface-container-highest": "#e1e2ec",
+              "tertiary-container": "#1d6e25",
+              "surface-tint": "#005db6",
+              "tertiary-fixed": "#a3f69c",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#727783",
+              "surface-container-high": "#e7e7f1",
+              "on-primary-fixed-variant": "#00468c",
+              "on-tertiary": "#ffffff",
+              "secondary": "#b6171e",
+              "on-secondary-fixed-variant": "#930010",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#88d982",
+              "inverse-on-surface": "#f0f0fa",
+              "on-background": "#191b22",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e1e2ec",
+              "primary": "#00478d",
+              "on-tertiary-fixed": "#002204"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .sentinel-shadow {
+        box-shadow: 0 32px 32px -4px rgba(25, 27, 34, 0.08);
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #faf8ff;
+      }
+      h1, h2, h3 {
+        font-family: 'Public Sans', sans-serif;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm h-16 flex items-center justify-between px-4">
+<div class="flex items-center gap-4">
+<button class="text-blue-700 dark:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 p-2 rounded-lg">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-xl font-black tracking-tight text-blue-800 dark:text-blue-300">ResQMap</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-blue-700 dark:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors active:scale-95 p-2 rounded-lg">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- NavigationDrawer (Large Screen Only) -->
+<aside class="hidden md:flex fixed inset-y-0 left-0 z-[60] w-72 bg-slate-50 dark:bg-slate-950 flex-col shadow-2xl transition-transform">
+<div class="text-2xl font-black text-blue-900 dark:text-blue-100 px-6 py-8">Sentinel Archive</div>
+<nav class="flex-1 space-y-2 px-4">
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-public-sans font-medium text-sm">Home</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-public-sans font-medium text-sm">Map</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-100 rounded-lg font-bold transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-public-sans font-medium text-sm">Learn</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">import_contacts</span>
+<span class="font-public-sans font-medium text-sm">Directory</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-public-sans font-medium text-sm">Contact</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">info</span>
+<span class="font-public-sans font-medium text-sm">About</span>
+</a>
+</nav>
+<div class="p-6 text-on-surface-variant text-[10px] uppercase tracking-widest opacity-50 font-bold">
+            Founded by Pawan Singh
+        </div>
+</aside>
+<!-- Main Content Area -->
+<main class="pt-16 pb-24 md:pb-8 md:pl-72 min-h-screen">
+<div class="max-w-7xl mx-auto px-4 md:px-8 py-12">
+<!-- Hero Editorial Section -->
+<section class="mb-16">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Archive Intel v2.4</span>
+<h2 class="text-4xl md:text-6xl font-black text-on-surface tracking-tight mb-6 leading-tight">
+                            Mastering Crisis <br/><span class="text-primary">Coordination.</span>
+</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-xl mb-8">
+                            Knowledge is the first line of defense. Access the ResQMap Sentinel Archive to understand real-time deployment strategies, resource allocation, and local response protocols.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-md font-bold shadow-lg hover:brightness-110 active:scale-95 transition-all">
+                                Download Manual
+                            </button>
+<button class="px-8 py-4 bg-surface-container-high text-primary rounded-md font-bold hover:bg-surface-container-highest transition-colors">
+                                View Modules
+                            </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square bg-surface-container rounded-xl overflow-hidden sentinel-shadow">
+<img class="w-full h-full object-cover" data-alt="Modern high-tech emergency response center with multiple screens displaying maps and data analytics in a clean blue-lit environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMteyeLZFQcwWzpay2eYlHUpWWqfhqMqAz6T8-qLjytXsttJ-TdHQkeXRAajQgxnYnt31uvwZAuuPzZoyPLjz4z4JKeby7DVno_iTGhETF5_bu5HUuXtzg8_lQErgsDE7L1EX9tQ_8fbeawH_2s1eycigdKx8kE5VMTSfaQPADWabIzluTrcNZ_pFBAVbX1heKQlPkn950wC0dm8Mi9EdVVSx-2qeJy4R3gP3hFCxDsIEfdbpiAl_FlOH9-MVzhDluxp4lBvKbWyQ"/>
+<div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+</div>
+<!-- Floating Data Panel -->
+<div class="absolute -bottom-6 -left-6 p-6 bg-surface-container-lowest glass-effect rounded-xl sentinel-shadow border border-white/20 max-w-[240px]">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">emergency_share</span>
+<span class="text-xs font-bold uppercase tracking-tighter">Live Status</span>
+</div>
+<div class="text-2xl font-black text-on-surface">Optimal</div>
+<p class="text-[10px] text-on-surface-variant mt-1 leading-tight">System responses are operating within sub-second latency across 14 zones.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-4">groups</span>
+<div class="text-5xl font-black text-on-surface mb-2">12k+</div>
+<div class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Active Users</div>
+</div>
+<div class="bg-surface-container p-8 rounded-xl flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4">bolt</span>
+<div class="text-5xl font-black text-on-surface mb-2">850+</div>
+<div class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Emergency Responses</div>
+</div>
+<div class="bg-surface-container-high p-8 rounded-xl flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-tertiary mb-4">package_2</span>
+<div class="text-5xl font-black text-on-surface mb-2">5.2k+</div>
+<div class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Resources Found</div>
+</div>
+</section>
+<!-- Interactive Panel: Data Vis & Notifications -->
+<section class="mb-16 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Data Visualization Toggle -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-center mb-12">
+<div>
+<h3 class="text-2xl font-black tracking-tight">Service Distribution</h3>
+<p class="text-sm text-on-surface-variant">Regional performance metrics</p>
+</div>
+<div class="flex bg-surface-container p-1 rounded-lg">
+<button class="px-4 py-2 bg-white rounded-md shadow-sm text-xs font-bold text-primary">Bar</button>
+<button class="px-4 py-2 text-xs font-bold text-on-surface-variant hover:text-on-surface">Pie</button>
+</div>
+</div>
+<!-- Simplified Visualizer (CSS Based) -->
+<div class="flex items-end justify-between h-64 gap-4 px-4">
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[65%] group-hover:brightness-125 transition-all"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">North</span>
+</div>
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[40%] group-hover:brightness-125 transition-all"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">East</span>
+</div>
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[85%] group-hover:brightness-125 transition-all"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">South</span>
+</div>
+<div class="w-full bg-primary-container/20 rounded-t-lg relative group">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[55%] group-hover:brightness-125 transition-all"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">West</span>
+</div>
+</div>
+</div>
+<!-- Notifications Panel -->
+<div class="lg:col-span-4 bg-surface-container-highest p-8 rounded-xl shadow-inner">
+<h3 class="text-xl font-black mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">history_edu</span>
+                        Real-time Logs
+                    </h3>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-4 rounded-lg shadow-sm">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold uppercase text-primary">Alert 204</span>
+<span class="text-[10px] text-on-surface-variant">2m ago</span>
+</div>
+<p class="text-sm font-medium leading-tight">Medical supplies dispatched to Zone Alpha.</p>
+</div>
+<div class="bg-surface-container-lowest/60 p-4 rounded-lg">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold uppercase text-tertiary">Success</span>
+<span class="text-[10px] text-on-surface-variant">15m ago</span>
+</div>
+<p class="text-sm font-medium leading-tight opacity-70">Rescue complete in Sector 7G.</p>
+</div>
+<div class="bg-surface-container-lowest/60 p-4 rounded-lg">
+<div class="flex justify-between items-start mb-1">
+<span class="text-[10px] font-bold uppercase text-secondary">Warning</span>
+<span class="text-[10px] text-on-surface-variant">42m ago</span>
+</div>
+<p class="text-sm font-medium leading-tight opacity-70">Low resource density detected in Central.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="mb-16">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-black tracking-tight mb-2">Field Experiences</h2>
+<p class="text-on-surface-variant">Voices from the ground level.</p>
+</div>
+<div class="flex overflow-x-auto pb-8 gap-6 snap-x no-scrollbar">
+<div class="min-w-[320px] bg-white p-8 rounded-xl sentinel-shadow snap-center border border-surface-container">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-on-surface-variant leading-relaxed mb-6">"The accuracy of the resource mapping saved our team nearly three hours during the monsoon floods."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a male paramedic smiling with a professional demeanor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3BYGFi4mK8qi1BrPNMxQ4ZDCiOHSLZqUAZjudMJFrRYItlwmWUqCcI92IXxNG8ZVJXgr8iNVTD4JJmuQAWIWVfnAc_NbfyRIedYBIx5-GT8f2tBw5ABDC-zbpScqkAMDWwWbbKoJ8MuoMeTBNNzNtfoQmjVBtj3jzFOVir3AlbsnhlYKlyPtywHJZ_bOJPD-bw89h2pa2LKY8kxOKf9T8QWqUBuYxzZKEc2tgpQx8RkpRDWbW-oYRJloDuRDD49uk8sGY3sjWoh4"/>
+</div>
+<div>
+<div class="text-sm font-bold">Dr. Marcus Thorne</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant">Rescue Lead, Red Cross</div>
+</div>
+</div>
+</div>
+<div class="min-w-[320px] bg-white p-8 rounded-xl sentinel-shadow snap-center border border-surface-container">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<p class="italic text-on-surface-variant leading-relaxed mb-6">"Intuitive UI that works even under high-stress situations. Essential tool for volunteer coordinators."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Smiling young woman outdoors with natural lighting and soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb5dgdhsG_lc9yXMXTO3zatZYuZFB0DgF2yw_Ghq9ZyN3N4Ak99Mg_8bsYpUhvi8eaKMwIdVtwjQn0kRW1NuA7LFZ_nTiYycI3XFp_U9m8nUfXemACeW81wY4BzgU7vPV2p96K33DSGIi-_j5HhI9FuPY1oNk2skb3nTtpYsVqqfm6QBBsVCBWUAY7mypoa_AX12QkymNvabhzCszKcmwcgAhDz_5nr5SocEBJGmKqEmmZVIbCIFFrQh9EnJU0g1z0eVJT3Pqw5TM"/>
+</div>
+<div>
+<div class="text-sm font-bold">Sarah Jenkins</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant">Community Volunteer</div>
+</div>
+</div>
+</div>
+<div class="min-w-[320px] bg-white p-8 rounded-xl sentinel-shadow snap-center border border-surface-container">
+<div class="flex gap-1 text-primary mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-on-surface-variant leading-relaxed mb-6">"The real-time updates are flawlessly executed. We finally have a unified source of truth."</p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of middle-aged man with short hair looking confidently into the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3NA-HZjIJrfZGQ2w4IihtbbRF1HRUoWV6JLfg8yn9wCTrEjR9-Row3CUvGLpQ-Y_g7CPNPCJy6Mwzw_gcDYSjzHaOGTOM8ijZK0dC0cEwDDQx3q3xfM6RnJDS0j1QrikNz_SrpoCCVOx6uw7KMkz5xUhsag4_AT09jYed0bFHYlg4vRVRblyOkJEX_3mtk5QCFYRJOU9JMce3uIk_-7zk6dQOTr1o5PXzkfX6HIHSbHEkqPEljqt-mO4GpweRtycnDQi24RB9ugM"/>
+</div>
+<div>
+<div class="text-sm font-bold">Officer Robert Chen</div>
+<div class="text-[10px] uppercase font-bold text-on-surface-variant">Public Safety Liaison</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="mb-16 max-w-3xl mx-auto">
+<h2 class="text-3xl font-black text-center mb-12">Archive Protocol FAQ</h2>
+<div class="space-y-2">
+<!-- Q1 -->
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-on-surface hover:bg-surface-container transition-colors">
+                            How do I register as a primary responder?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                            Navigate to the Dashboard and click 'Apply for Responder Status'. You will need to provide valid emergency certification and complete a short verification protocol.
+                        </div>
+</details>
+<!-- Q2 -->
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-on-surface hover:bg-surface-container transition-colors">
+                            Are my location details encrypted?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                            Yes, ResQMap utilizes AES-256 bit encryption for all personal telemetry. Your precise location is only visible to active emergency responders during an SOS event.
+                        </div>
+</details>
+<!-- Q3 -->
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-on-surface hover:bg-surface-container transition-colors">
+                            How often is the resource map updated?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                            Data synchronization occurs every 60 seconds. Critical updates like shelter availability or flood warnings are pushed instantly via the live notification panel.
+                        </div>
+</details>
+<!-- Q4 -->
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-on-surface hover:bg-surface-container transition-colors">
+                            Can I use ResQMap offline?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                            The Sentinel Archive allows you to download regional data packets. In offline mode, you can access previously cached maps and emergency contacts.
+                        </div>
+</details>
+<!-- Q5 -->
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-on-surface hover:bg-surface-container transition-colors">
+                            What are the regional tier classifications?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                            Zones are classified from Tier 1 (Stable) to Tier 4 (Critical Crisis). These tiers dictate the level of resource automation and external aid mobilization.
+                        </div>
+</details>
+<!-- Q6 -->
+<details class="group bg-surface-container-low rounded-xl overflow-hidden">
+<summary class="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-on-surface hover:bg-surface-container transition-colors">
+                            Who can I contact for technical support?
+                            <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-6 pt-0 text-on-surface-variant leading-relaxed">
+                            Technical support is available 24/7 through the 'Contact' portal or by emailing support@resqmap.org. Priority response is given to active emergency zones.
+                        </div>
+</details>
+</div>
+</section>
+<!-- Feedback Form -->
+<section class="mb-16 max-w-2xl mx-auto bg-surface-container-lowest p-10 rounded-2xl shadow-sm border border-outline-variant/20">
+<div class="text-center mb-8">
+<h2 class="text-3xl font-black mb-2">Help Us Improve</h2>
+<p class="text-on-surface-variant">Your feedback helps refine the Sentinel Archive.</p>
+</div>
+<form class="space-y-6">
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Rating</label>
+<div class="flex gap-2 text-surface-dim">
+<button class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" type="button">star</button>
+<button class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" type="button">star</button>
+<button class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" type="button">star</button>
+<button class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" type="button">star</button>
+<button class="material-symbols-outlined" type="button">star</button>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2">Message</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary text-sm" placeholder="Tell us about your experience..." rows="4"></textarea>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary font-bold rounded-md hover:brightness-110 transition-all">
+                        Submit Intelligence
+                    </button>
+</form>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 px-6 bg-slate-50/90 dark:bg-slate-950/90 backdrop-blur-xl border-t border-slate-200/20 flex justify-around items-center z-50 pb-safe">
+<a class="flex flex-col items-center justify-center text-slate-500 opacity-70" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-700 scale-110" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 opacity-70" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Profile</span>
+</a>
+</nav>
+</body></html>

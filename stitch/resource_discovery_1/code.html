@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ResQMap | Resource Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#005eb8",
+              "on-primary-fixed": "#001b3d",
+              "primary": "#00478d",
+              "background": "#faf8ff",
+              "on-tertiary-fixed": "#002204",
+              "inverse-on-surface": "#f0f0fa",
+              "surface-variant": "#e1e2ec",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c2c6d4",
+              "secondary-container": "#da3433",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#ffb3ac",
+              "surface-container-highest": "#e1e2ec",
+              "on-secondary-fixed": "#410003",
+              "secondary": "#b6171e",
+              "tertiary-fixed-dim": "#88d982",
+              "outline": "#727783",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#1d6e25",
+              "on-tertiary-container": "#9bee94",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#faf8ff",
+              "on-primary": "#ffffff",
+              "primary-fixed-dim": "#a9c7ff",
+              "on-surface": "#191b22",
+              "on-surface-variant": "#424752",
+              "on-tertiary-fixed-variant": "#005312",
+              "on-secondary-container": "#fffbff",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#a9c7ff",
+              "on-error": "#ffffff",
+              "on-primary-container": "#c8daff",
+              "secondary-fixed": "#ffdad6",
+              "surface-container-low": "#f2f3fd",
+              "on-secondary-fixed-variant": "#930010",
+              "surface-tint": "#005db6",
+              "surface-container": "#ededf7",
+              "surface": "#faf8ff",
+              "tertiary": "#005412",
+              "primary-fixed": "#d6e3ff",
+              "on-primary-fixed-variant": "#00468c",
+              "surface-container-high": "#e7e7f1",
+              "inverse-surface": "#2e3038",
+              "tertiary-fixed": "#a3f69c",
+              "surface-container-lowest": "#ffffff",
+              "surface-dim": "#d9d9e3",
+              "on-background": "#191b22"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .sentinel-shadow {
+        box-shadow: 0 32px 32px -4px rgba(25, 27, 34, 0.08);
+      }
+      .primary-gradient {
+        background: linear-gradient(135deg, #00478d 0%, #005eb8 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-3 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-700 dark:text-blue-400">search</span>
+<h1 class="text-2xl font-black tracking-tight text-blue-800 dark:text-blue-300 font-headline">ResQMap</h1>
+</div>
+<div class="flex items-center gap-4">
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-slate-600 dark:text-slate-400 font-inter text-sm hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors px-2 py-1 rounded" href="#">Map</a>
+<a class="text-blue-700 dark:text-blue-400 font-bold font-inter text-sm hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors px-2 py-1 rounded" href="#">Resources</a>
+<a class="text-slate-600 dark:text-slate-400 font-inter text-sm hover:bg-slate-200/50 dark:hover:bg-slate-800/50 transition-colors px-2 py-1 rounded" href="#">Reports</a>
+</nav>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="User profile avatar" data-alt="close-up portrait of a professional woman with a calm and helpful expression, soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALB5-h9yh5xCxxIg30ZbbAKDW0CJNUm7jVD4EYzGUKXWhvV35vhMlgdgx-27yM7jtUXeo87U1AarYgiilD94nxGHg33dfjfpqS8J4KX2UbvYSXxoX4tBaIh8hhVPQ8tEOKsP4DB0AOPSXlipjZ7PXC-QCzrJMIiMGxc2Se9S4LFqVJ5t6fxgVz1ay39tNj14iVRZOba_ShpvOpA1wDcBtQUw8jrYk70JQCZuTQUeAyQKxCHJfdK6gg7B5wl8j2jHyW6-oJFpwe-cY"/>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-28 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Hero Section / Context -->
+<section class="mb-12">
+<h2 class="font-headline font-extrabold text-4xl text-on-surface mb-2">Resource Discovery</h2>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed">Access immediate support systems. Filters prioritized by accessibility compliance and real-time availability in your current sector.</p>
+</section>
+<!-- Search & Filter Bar (Tactile Layering) -->
+<div class="mb-12 flex flex-col md:flex-row gap-4 items-center bg-surface-container-low p-4 rounded-xl shadow-sm">
+<div class="relative w-full md:w-1/2">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg pl-12 py-3 focus:ring-2 focus:ring-primary-container font-label" placeholder="Search pharmacies, clinics, or shelters..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+<button class="flex items-center gap-2 bg-tertiary-fixed text-on-tertiary-fixed px-4 py-2 rounded-full font-label text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">accessible</span> Wheelchair Access
+                </button>
+<button class="flex items-center gap-2 bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full font-label text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">emergency</span> Open Now
+                </button>
+<button class="flex items-center gap-2 bg-surface-container-highest text-on-surface-variant px-4 py-2 rounded-full font-label text-xs font-semibold uppercase tracking-wider whitespace-nowrap">
+<span class="material-symbols-outlined text-sm">distance</span> Within 2km
+                </button>
+</div>
+</div>
+<!-- Resources Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Featured Map View (Asymmetric Layout) -->
+<div class="md:col-span-7 lg:col-span-8 rounded-2xl overflow-hidden sentinel-shadow relative min-h-[400px]">
+<img class="w-full h-full object-cover" data-alt="clean digital map interface showing city streets with subtle blue and gray tones and several glowing resource markers" data-location="Seattle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBziJTqZYA7HzojR5HsHtmMvvyzMTB9DkOgwqMjXWn4qFjhUKonlgG2MTaOiJVFB6_dymDlT13YNAL6Oqf3DGs6-S52CSWvz-M1YoXi_MxWZyNd0y7kJ0AW7L_B74MOqYsLF09Ccu715_AULwLDDFNhK9PE1IV9JhV4SQL6Wr23oO-fkr26ie63DavixH2_qUAm1BGxrf6yRYXBQANlkqOw2sAH_3cr8Fz_rC4ul17a7Y9EXPpSOjqOKmrPnTFIe8Kuib_h9FVo6bs"/>
+<div class="absolute bottom-6 left-6 right-6 flex gap-4">
+<div class="glass-effect bg-surface-container-lowest/80 p-4 rounded-xl flex-1 flex items-center justify-between">
+<div>
+<p class="font-label text-[10px] font-bold uppercase tracking-widest text-primary">Current Navigation</p>
+<p class="font-headline font-bold text-lg">Safe Route to Central Shelter</p>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl">directions_walk</span>
+</div>
+</div>
+</div>
+<!-- Urgent Resources Column -->
+<div class="md:col-span-5 lg:col-span-4 space-y-6">
+<!-- Status Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-5 sentinel-shadow border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-secondary-container text-on-secondary-fixed px-3 py-1 rounded-full font-label text-[10px] font-bold uppercase tracking-wider">High Demand</span>
+<span class="font-label text-xs font-semibold text-on-surface-variant">0.4 km away</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-1">Central Community Shelter</h3>
+<p class="text-sm text-on-surface-variant mb-4">Priority access for families and mobility-impaired individuals.</p>
+<div class="flex gap-3 mb-6">
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;" title="Wheelchair Accessible">accessible</span>
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;" title="Braille Labels">blind</span>
+<span class="material-symbols-outlined text-tertiary-container" style="font-variation-settings: 'FILL' 1;" title="Elevator Access">elevator</span>
+</div>
+<button class="w-full primary-gradient text-on-primary font-bold py-3 rounded-md hover:scale-[0.98] transition-transform text-sm uppercase tracking-widest">Secure Spot</button>
+</div>
+<!-- Status Card 2 -->
+<div class="bg-surface-container rounded-xl p-5">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label text-[10px] font-bold uppercase tracking-wider">Stable</span>
+<span class="font-label text-xs font-semibold text-on-surface-variant">1.2 km away</span>
+</div>
+<h3 class="font-headline font-bold text-xl mb-1">Beacon Hill Pharmacy</h3>
+<p class="text-sm text-on-surface-variant mb-4">Full stock of critical medication and emergency first-aid kits.</p>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" title="Hearing Loop">hearing</span>
+<span class="material-symbols-outlined text-on-surface-variant" title="Ramp Access">ramp_left</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Extended List View (Subtle Tonal Separation) -->
+<section class="mt-16">
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-headline font-bold text-2xl">Nearby Support Centers</h2>
+<button class="text-primary font-bold text-sm flex items-center gap-1">View All <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="group flex flex-col md:flex-row items-center gap-6 p-4 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="modern hospital building exterior with clean lines and large windows in daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCliB9_fg3Da-Zwyz-fWGnf2Bz1JJV0eTh6pvJ4F-ZzSTY1hnn2CPugt8GxlNTrsszR7s9qbf885HL2WKf2GH8pr_J3G-ML4nIpJZc9IhAygwUmqRDYDJl0dlm3EiJy8GyQa1Wn1YYXuzmuP8psoTUe53cBKHSk7oy9sjWYD8ECid7OXbti5p-Q33aMnEDbC9MT3uao1CbvYK6oUEBy1eNTWmNOrHbc91I15hUn4B4M_MboHe82QdK9E1Y2C_AkU36223Ac5-u_IeI"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h4 class="font-headline font-bold text-lg">St. Jude Medical Relief</h4>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">Stable</span>
+</div>
+<p class="text-sm text-on-surface-variant">Specialized unit for chronic care and respiratory support. Ground floor entry.</p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="text-right hidden md:block">
+<p class="font-bold text-lg">1.8 km</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Distance</p>
+</div>
+<button class="p-3 rounded-full bg-surface-container-highest text-primary hover:bg-primary-container hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">navigation</span>
+</button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group flex flex-col md:flex-row items-center gap-6 p-4 rounded-xl bg-surface-container-lowest transition-colors border-y border-transparent">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="indoor facility with organized supply boxes and helpful staff in high-visibility vests" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIONOuB04cfKxGbvFxrMr_KtoFMFVtkf1JXA2A-kGWytqLLfr4QiVZrP0JWfcMN0G39IkBVq-3dAYhe-mw3vSXr43Us9SoPy86HQFD9wRcBLGGoEUsC1O_6-i1CxMTkP8YICydy8ONqH4r47zrM6lCwLsu5iE9A3O1eoimqSykQviXKSTaCY8hdlNkkJyD7lbqtYB-DAqX9Si4afxI3hSa1Rs5a7JbEip5LvUO_avLthVN-W2Xn2gJ6qzySJFQF7S805akZIhXFY0"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-1">
+<h4 class="font-headline font-bold text-lg">Northside Food Bank</h4>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded-full text-[9px] font-bold uppercase">Limited Stock</span>
+</div>
+<p class="text-sm text-on-surface-variant">Emergency rations and clean water distribution. Fully accessible loading bay.</p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="text-right hidden md:block">
+<p class="font-bold text-lg">2.1 km</p>
+<p class="text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">Distance</p>
+</div>
+<button class="p-3 rounded-full bg-surface-container-highest text-primary hover:bg-primary-container hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">navigation</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md shadow-[0_-4px_10px_rgba(0,0,0,0.05)] rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-600 dark:hover:text-blue-300">map</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1 group-hover:text-blue-600">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-xl px-3 py-1 scale-98 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-600 dark:hover:text-blue-300">report_problem</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1 group-hover:text-blue-600">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 group" href="#">
+<span class="material-symbols-outlined group-hover:text-blue-600 dark:hover:text-blue-300">person</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1 group-hover:text-blue-600">Profile</span>
+</a>
+</nav>
+</body></html>

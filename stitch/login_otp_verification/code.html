@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verify Your Identity - ResQMap</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Public Sans & Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#a9c7ff",
+              "tertiary-fixed-dim": "#88d982",
+              "background": "#faf8ff",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#2e3038",
+              "on-surface": "#191b22",
+              "tertiary-fixed": "#a3f69c",
+              "secondary": "#b6171e",
+              "tertiary": "#005412",
+              "on-secondary-fixed": "#410003",
+              "primary-fixed": "#d6e3ff",
+              "on-primary-container": "#c8daff",
+              "error": "#ba1a1a",
+              "surface": "#faf8ff",
+              "surface-dim": "#d9d9e3",
+              "outline-variant": "#c2c6d4",
+              "surface-tint": "#005db6",
+              "on-primary-fixed": "#001b3d",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#424752",
+              "on-secondary": "#ffffff",
+              "primary-fixed-dim": "#a9c7ff",
+              "surface-bright": "#faf8ff",
+              "on-secondary-fixed-variant": "#930010",
+              "surface-variant": "#e1e2ec",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e1e2ec",
+              "on-primary-fixed-variant": "#00468c",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#fffbff",
+              "inverse-on-surface": "#f0f0fa",
+              "surface-container-high": "#e7e7f1",
+              "tertiary-container": "#1d6e25",
+              "primary-container": "#005eb8",
+              "secondary-fixed-dim": "#ffb3ac",
+              "secondary-container": "#da3433",
+              "on-tertiary-container": "#9bee94",
+              "on-background": "#191b22",
+              "secondary-fixed": "#ffdad6",
+              "on-error": "#ffffff",
+              "outline": "#727783",
+              "surface-container-low": "#f2f3fd",
+              "on-tertiary-fixed": "#002204",
+              "on-tertiary-fixed-variant": "#005312",
+              "surface-container": "#ededf7",
+              "error-container": "#ffdad6",
+              "primary": "#00478d"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(242, 243, 253, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .sentinel-shadow {
+            box-shadow: 0 32px 32px -4px rgba(25, 27, 34, 0.08);
+        }
+        .cta-gradient {
+            background: linear-gradient(135deg, #00478d 0%, #005eb8 100%);
+        }
+        .cta-gradient:hover {
+            background: linear-gradient(180deg, #00478d 0%, #005eb8 100%);
+        }
+        .cta-gradient:active {
+            transform: scale(0.98);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar - Suppressed per Shell Visibility Rule (Transactional Page) -->
+<!-- We keep a simple branding anchor instead -->
+<header class="w-full flex justify-center py-12">
+<div class="text-3xl font-black text-primary tracking-tighter font-headline">ResQMap</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-6">
+<div class="max-w-md w-full">
+<!-- Information Sheet / Card -->
+<section class="bg-surface-container-low p-8 md:p-12 rounded-xl sentinel-shadow relative overflow-hidden">
+<!-- Decorative Sentinel Accent -->
+<div class="absolute top-0 left-0 w-1 h-full bg-primary opacity-20"></div>
+<!-- Header Section -->
+<div class="mb-10 text-center">
+<h1 class="font-headline font-bold text-3xl tracking-tight text-on-surface mb-3">Verify Your Identity</h1>
+<p class="text-on-surface-variant text-sm leading-relaxed max-w-[280px] mx-auto">
+                        Enter the 6-digit code sent to your email to continue to the command center.
+                    </p>
+</div>
+<!-- OTP Inputs -->
+<form action="#" class="space-y-10" method="POST">
+<div class="flex justify-between gap-2 md:gap-4">
+<!-- Six Individual OTP Inputs -->
+<input aria-label="Digit 1" class="w-12 h-16 md:w-14 md:h-18 text-center text-2xl font-bold rounded-lg border-0 bg-surface-container-highest text-primary focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" maxlength="1" type="text"/>
+<input aria-label="Digit 2" class="w-12 h-16 md:w-14 md:h-18 text-center text-2xl font-bold rounded-lg border-0 bg-surface-container-highest text-primary focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" maxlength="1" type="text"/>
+<input aria-label="Digit 3" class="w-12 h-16 md:w-14 md:h-18 text-center text-2xl font-bold rounded-lg border-0 bg-surface-container-highest text-primary focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" maxlength="1" type="text"/>
+<input aria-label="Digit 4" class="w-12 h-16 md:w-14 md:h-18 text-center text-2xl font-bold rounded-lg border-0 bg-surface-container-highest text-primary focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" maxlength="1" type="text"/>
+<input aria-label="Digit 5" class="w-12 h-16 md:w-14 md:h-18 text-center text-2xl font-bold rounded-lg border-0 bg-surface-container-highest text-primary focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" maxlength="1" type="text"/>
+<input aria-label="Digit 6" class="w-12 h-16 md:w-14 md:h-18 text-center text-2xl font-bold rounded-lg border-0 bg-surface-container-highest text-primary focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" maxlength="1" type="text"/>
+</div>
+<!-- Main Action -->
+<div class="space-y-6">
+<button class="w-full h-14 cta-gradient text-on-primary font-bold rounded-lg flex items-center justify-center gap-2 shadow-lg transition-transform duration-150" type="submit">
+<span>Verify &amp; Login</span>
+<span class="material-symbols-outlined text-xl" data-icon="login">login</span>
+</button>
+<!-- Secondary Actions / Resend -->
+<div class="flex flex-col items-center gap-2">
+<div class="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-on-surface-variant">
+<span>Code expires in</span>
+<span class="text-secondary font-bold">59s</span>
+</div>
+<button class="text-sm font-semibold text-primary hover:text-on-primary-fixed-variant transition-colors flex items-center gap-1" type="button">
+<span>Resend Code</span>
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+</form>
+</section>
+<!-- Quick Help / Support Context (Asymmetric Layout element) -->
+<div class="mt-8 flex justify-center">
+<div class="flex items-center gap-4 bg-surface-container rounded-full px-6 py-3">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-outline-variant flex items-center justify-center text-[10px] text-white font-bold ring-2 ring-surface">JD</div>
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold ring-2 ring-surface">RM</div>
+</div>
+<span class="text-xs font-medium text-on-surface-variant">Need help? Contact support</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="w-full py-8 px-6 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto border-t border-opacity-15 border-[#424752] bg-surface">
+<div class="text-sm font-bold text-on-surface-variant">Founded by Pawan Singh</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Inter'] text-xs font-medium uppercase tracking-widest text-on-surface-variant hover:text-primary transition-opacity" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs font-medium uppercase tracking-widest text-on-surface-variant hover:text-primary transition-opacity" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs font-medium uppercase tracking-widest text-on-surface-variant hover:text-primary transition-opacity" href="#">Emergency Contact</a>
+</div>
+<div class="text-[10px] uppercase tracking-tighter text-outline opacity-50">ResQMap © 2024</div>
+</footer>
+<!-- Background Context - Map Visualization Subtle Overlay -->
+<div class="fixed inset-0 -z-10 opacity-[0.03] pointer-events-none overflow-hidden">
+<img alt="Tactical Map Background" class="w-full h-full object-cover" data-alt="Monochrome detailed topographic map with complex contour lines and geographical textures for tactical background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRlbENSwDnl5z2J_WSL1Em_4RIwrZQzqIB2Cj-6OQ55bb3WU1DWKrLQHAdXMi6CtjumjulpZA40zxsvG3nJCga1FeG1-rmYzQzZRw6iZ-hjQicmdvldokuazkZmMTsiMK_AxP7DpMgZI_rhweyX3mOMFQ87b_zsOchlD3x8WlOMNjuxjQ_InlRU0GsUqF_hhagY3NHkPUNqwc4z3NcFioqQxOp4m6iiJQMt9X00opiBGYA2dVwS9H4ft9AcBv5WfZ788x1F9soZ5Y"/>
+</div>
+</body></html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About ResQMap | The Sentinel Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#d9d9e3",
+              "on-primary-fixed": "#001b3d",
+              "surface-bright": "#faf8ff",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "surface": "#faf8ff",
+              "secondary-fixed": "#ffdad6",
+              "on-surface": "#191b22",
+              "on-error-container": "#93000a",
+              "inverse-surface": "#2e3038",
+              "surface-container": "#ededf7",
+              "secondary-container": "#da3433",
+              "on-secondary-fixed": "#410003",
+              "tertiary": "#005412",
+              "surface-container-low": "#f2f3fd",
+              "secondary-fixed-dim": "#ffb3ac",
+              "on-tertiary-container": "#9bee94",
+              "background": "#faf8ff",
+              "primary-fixed": "#d6e3ff",
+              "primary-fixed-dim": "#a9c7ff",
+              "on-secondary-container": "#fffbff",
+              "on-tertiary-fixed-variant": "#005312",
+              "primary-container": "#005eb8",
+              "on-surface-variant": "#424752",
+              "error-container": "#ffdad6",
+              "on-primary-container": "#c8daff",
+              "inverse-primary": "#a9c7ff",
+              "outline-variant": "#c2c6d4",
+              "surface-container-highest": "#e1e2ec",
+              "tertiary-container": "#1d6e25",
+              "surface-tint": "#005db6",
+              "tertiary-fixed": "#a3f69c",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#727783",
+              "surface-container-high": "#e7e7f1",
+              "on-primary-fixed-variant": "#00468c",
+              "on-tertiary": "#ffffff",
+              "secondary": "#b6171e",
+              "on-secondary-fixed-variant": "#930010",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#88d982",
+              "inverse-on-surface": "#f0f0fa",
+              "on-background": "#191b22",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e1e2ec",
+              "primary": "#00478d",
+              "on-tertiary-fixed": "#002204"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        background: rgba(242, 243, 253, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-md shadow-sm flex items-center justify-between px-4 h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-blue-700">menu</span>
+<h1 class="text-xl font-black tracking-tight text-blue-800 font-headline">ResQMap</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-blue-700">notifications</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto space-y-24">
+<!-- Hero Section: Editorial Mission Statement -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+<div class="lg:col-span-8">
+<span class="text-secondary font-headline font-bold tracking-widest uppercase text-sm block mb-4">The Sentinel Archive</span>
+<h2 class="text-5xl md:text-7xl font-headline font-black text-on-surface leading-tight">
+                    Clarity in the <br/><span class="text-primary italic">Face of Chaos.</span>
+</h2>
+<p class="mt-8 text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+                    ResQMap isn't just a utility; it's a digital field manual designed to empower response teams and citizens when seconds define the outcome. Our mission is to transform fragmented emergency data into a single, decisive source of truth.
+                </p>
+</div>
+<div class="lg:col-span-4 flex flex-col items-start lg:items-end">
+<div class="p-6 bg-surface-container-low rounded-xl border-l-4 border-primary">
+<p class="text-sm font-bold text-primary uppercase tracking-tighter mb-1">Status: Active</p>
+<p class="text-xs text-on-surface-variant font-medium">Serving 142 Operational Sectors Worldwide</p>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Founder Information -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 relative overflow-hidden rounded-xl h-[400px] group">
+<img alt="Portrait of Pawan Singh" class="w-full h-full object-cover" data-alt="Professional portrait of Pawan Singh, founder of ResQMap, in a bright modern office with warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9hg7AxEzyhM9z4rp3cRFtOtUnjAL7uvTMkboK52np4WktlwEyu96HMjOUWcIN_-xb0zRkbHrqEC0Caxc66-4Mn-8Q07cpHoVP-_ysi3y395AGoHOyGawd_U3YsC90E05Qp2vWrQasq8pdk3rdpxpvZPgMFduTlG4QqCq-FiNCGsh67hH9k94AM8EbZLJKhBq5sFFxFJJHhMFy5HUycNfLFyH_5q3bSba51EUCwtDxNtkuAbNKHrytMhCiNxQ-jQlcKCQ3YC_GYFE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent flex flex-col justify-end p-8">
+<h3 class="text-3xl font-headline font-black text-surface">Pawan Singh</h3>
+<p class="text-surface-dim text-lg">Founder &amp; Chief Architect</p>
+</div>
+</div>
+<div class="bg-surface-container-high p-8 rounded-xl flex flex-col justify-center">
+<h4 class="text-xl font-headline font-bold mb-4 text-primary">The Visionary</h4>
+<p class="text-on-surface-variant leading-relaxed italic">
+                    "I saw the disconnect between data and action during the 2018 floods. ResQMap was born from the belief that information is the most powerful rescue tool we have."
+                </p>
+<div class="mt-8 flex gap-4">
+<div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-sm">verified</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest flex items-center">Official Founder Profile</span>
+</div>
+</div>
+</section>
+<!-- Interactive Timeline: The Journey -->
+<section class="space-y-12">
+<div class="text-center space-y-2">
+<h3 class="text-3xl font-headline font-black">Our Evolution</h3>
+<div class="h-1 w-24 bg-primary mx-auto"></div>
+</div>
+<div class="relative py-12">
+<!-- Vertical Line -->
+<div class="absolute left-1/2 -translate-x-1/2 h-full w-px bg-outline-variant opacity-30 hidden md:block"></div>
+<div class="space-y-16">
+<!-- Milestone 1 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="w-full md:w-1/2 md:pr-12 text-right order-2 md:order-1">
+<h4 class="text-xl font-bold text-primary">The Spark</h4>
+<p class="text-on-surface-variant text-sm mt-2">First prototype developed in a dormitory, focusing on offline grid mapping for flood zones.</p>
+</div>
+<div class="relative z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold order-1 md:order-2">2019</div>
+<div class="w-full md:w-1/2 md:pl-12 order-3"></div>
+</div>
+<!-- Milestone 2 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="w-full md:w-1/2 md:pr-12 order-2 md:order-1"></div>
+<div class="relative z-10 w-12 h-12 rounded-full bg-surface-container-highest border-2 border-primary flex items-center justify-center text-primary font-bold order-1 md:order-2">2020</div>
+<div class="w-full md:w-1/2 md:pl-12 text-left order-3">
+<h4 class="text-xl font-bold text-primary">Alpha Deployment</h4>
+<p class="text-on-surface-variant text-sm mt-2">Successfully piloted ResQMap during the Monsoon Relief efforts in South Asia.</p>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="w-full md:w-1/2 md:pr-12 text-right order-2 md:order-1">
+<h4 class="text-xl font-bold text-primary">Satellite Integration</h4>
+<p class="text-on-surface-variant text-sm mt-2">Partnered with global aerospace firms to integrate real-time high-res imagery.</p>
+</div>
+<div class="relative z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold order-1 md:order-2">2021</div>
+<div class="w-full md:w-1/2 md:pl-12 order-3"></div>
+</div>
+<!-- Milestone 4 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="w-full md:w-1/2 md:pr-12 order-2 md:order-1"></div>
+<div class="relative z-10 w-12 h-12 rounded-full bg-surface-container-highest border-2 border-primary flex items-center justify-center text-primary font-bold order-1 md:order-2">2022</div>
+<div class="w-full md:w-1/2 md:pl-12 text-left order-3">
+<h4 class="text-xl font-bold text-primary">Open-Source Hub</h4>
+<p class="text-on-surface-variant text-sm mt-2">Launched the ResQ-Open protocol, allowing community-driven data validation.</p>
+</div>
+</div>
+<!-- Milestone 5 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="w-full md:w-1/2 md:pr-12 text-right order-2 md:order-1">
+<h4 class="text-xl font-bold text-primary">The Archive Update</h4>
+<p class="text-on-surface-variant text-sm mt-2">Redesigned the UI to the "Sentinel Archive" philosophy for maximum efficiency.</p>
+</div>
+<div class="relative z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold order-1 md:order-2">2023</div>
+<div class="w-full md:w-1/2 md:pl-12 order-3"></div>
+</div>
+<!-- Milestone 6 -->
+<div class="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+<div class="w-full md:w-1/2 md:pr-12 order-2 md:order-1"></div>
+<div class="relative z-10 w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-on-secondary font-bold order-1 md:order-2">2024</div>
+<div class="w-full md:w-1/2 md:pl-12 text-left order-3">
+<h4 class="text-xl font-bold text-secondary">Global Standard</h4>
+<p class="text-on-surface-variant text-sm mt-2">Now active in 50+ countries as a primary auxiliary rescue dashboard.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Comparison Table: ResQMap vs Competitors -->
+<section class="bg-surface-container rounded-3xl p-8 md:p-12">
+<h3 class="text-3xl font-headline font-black mb-12 text-center">Unmatched Resilience</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-on-surface-variant font-bold text-sm uppercase tracking-widest border-b border-outline-variant/20">
+<th class="pb-6 px-4">Capability</th>
+<th class="pb-6 px-4 text-primary">ResQMap</th>
+<th class="pb-6 px-4">Standard Apps</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr>
+<td class="py-6 px-4 font-bold">Offline Resilience</td>
+<td class="py-6 px-4 text-primary font-black">Full Mesh-Network Sync</td>
+<td class="py-6 px-4 text-on-surface-variant">Cached Only</td>
+</tr>
+<tr>
+<td class="py-6 px-4 font-bold">Data Sovereignty</td>
+<td class="py-6 px-4 text-primary font-black">Encrypted P2P</td>
+<td class="py-6 px-4 text-on-surface-variant">Centralized Cloud</td>
+</tr>
+<tr>
+<td class="py-6 px-4 font-bold">Latency Response</td>
+<td class="py-6 px-4 text-primary font-black">&lt;200ms Signal Lag</td>
+<td class="py-6 px-4 text-on-surface-variant">2-5s Variable</td>
+</tr>
+<tr>
+<td class="py-6 px-4 font-bold">Visual Interface</td>
+<td class="py-6 px-4 text-primary font-black">Sentinel Editorial</td>
+<td class="py-6 px-4 text-on-surface-variant">Standard Grid</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-low p-10 rounded-xl relative group">
+<div class="absolute -top-4 -left-4 h-12 w-12 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">format_quote</span>
+</div>
+<p class="text-lg leading-relaxed text-on-surface mb-8">
+                    "During the hurricane evacuation, ResQMap was the only tool that kept our team synchronized when cellular towers went down. It saved lives."
+                </p>
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-slate-200">
+<img alt="Chief Sarah Jenkins" class="w-full h-full object-cover rounded-full" data-alt="Close-up portrait of a woman in an emergency response uniform with a determined expression, outdoor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEqep2FKl1EuqDoRiZsADO69vCgRdU6P5MrgGZkEnymetOz1VkIdF2oP85CdJ7WDNBpsqYC2WDdeU2IqaqJ2SHaRTEYjeI7vB8thAqdiwkcMlBDzlBDsGn09PXnVRP6BWUkAyFfMtq-X4RzQ5QyYQ4s9Sd91HV_1sZHF_sGGeNpOc8PVpenPBUS5pzEq60peeMKkhO1diAGSoBhh5su0qsh7762n_PLR_y_f_TGXUQr2syK-TMoN-8FWBP0b-rP7APF8zXCym9yps"/>
+</div>
+<div>
+<p class="font-bold">Chief Sarah Jenkins</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">Regional Fire Dept.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-10 rounded-xl relative group">
+<div class="absolute -top-4 -left-4 h-12 w-12 bg-tertiary-container rounded-lg flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined">format_quote</span>
+</div>
+<p class="text-lg leading-relaxed text-on-surface mb-8">
+                    "The clarity of the UI is incredible. You don't have to 'learn' ResQMap; it intuitively guides you through the archive when you're under stress."
+                </p>
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-slate-200">
+<img alt="Marcus Thorne" class="w-full h-full object-cover rounded-full" data-alt="Professional portrait of a middle-aged man with glasses, looking thoughtful, warm library background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSBKXpxtaZH74-tdcnFQOJrhyOgVkYAVZj47IubRPPoy21xKIEQV-9-Hn9V4dS8cWiSXrJGhQX2zTU-HPOLwcbD1Z903blZ5446saoilHweO7qCFKFXi2-utlHu6aIiPmSaR2OjW3jxk-B04BgqW2SdYPLr5hgZBPwlG_K5-17UfYBdPfsm51ep-kcyy_TNfX6I3X1MZAzBcS45QbwtCZUky3DrmOKkseuZRGam4r4eJAmHuT2e-8XuPdrO6lZNNzv8Db1ZBAaeho"/>
+</div>
+<div>
+<p class="font-bold">Marcus Thorne</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest">Urban Planner</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest mt-24 px-4 py-16">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="space-y-4 text-center md:text-left">
+<h2 class="text-2xl font-black text-blue-900 font-headline">ResQMap</h2>
+<p class="text-sm text-on-surface-variant font-medium">Providing the digital architecture for global resilience.</p>
+<p class="text-xs font-bold uppercase tracking-widest text-primary">Founded by Pawan Singh</p>
+</div>
+<div class="flex gap-12">
+<div class="space-y-3">
+<p class="font-bold text-xs uppercase tracking-widest">Resources</p>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li>Archive Docs</li>
+<li>API Access</li>
+<li>Safety Protocol</li>
+</ul>
+</div>
+<div class="space-y-3">
+<p class="font-bold text-xs uppercase tracking-widest">Contact</p>
+<ul class="text-sm text-on-surface-variant space-y-2">
+<li>Emergency Line</li>
+<li>Support</li>
+<li>Global HQ</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-outline-variant/10 text-center">
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant opacity-60">
+                © 2024 Sentinel Archive Systems. All rights reserved.
+            </p>
+</div>
+</footer>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 px-6 flex justify-around items-center z-50 pb-safe bg-slate-50/90 backdrop-blur-xl shadow-[0_-4px_12px_rgba(0,0,0,0.05)] rounded-t-2xl border-t border-slate-200/20">
+<div class="flex flex-col items-center justify-center text-slate-500 opacity-70">
+<span class="material-symbols-outlined">home</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 opacity-70">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Alerts</span>
+</div>
+<div class="flex flex-col items-center justify-center text-blue-700 scale-110">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Profile</span>
+</div>
+</nav>
+</body></html>

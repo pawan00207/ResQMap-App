@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ResQMap - Incident Reporting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;800;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#005eb8",
+              "on-primary-fixed": "#001b3d",
+              "primary": "#00478d",
+              "background": "#faf8ff",
+              "on-tertiary-fixed": "#002204",
+              "inverse-on-surface": "#f0f0fa",
+              "surface-variant": "#e1e2ec",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c2c6d4",
+              "secondary-container": "#da3433",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#ffb3ac",
+              "surface-container-highest": "#e1e2ec",
+              "on-secondary-fixed": "#410003",
+              "secondary": "#b6171e",
+              "tertiary-fixed-dim": "#88d982",
+              "outline": "#727783",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#1d6e25",
+              "on-tertiary-container": "#9bee94",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#faf8ff",
+              "on-primary": "#ffffff",
+              "primary-fixed-dim": "#a9c7ff",
+              "on-surface": "#191b22",
+              "on-surface-variant": "#424752",
+              "on-tertiary-fixed-variant": "#005312",
+              "on-secondary-container": "#fffbff",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#a9c7ff",
+              "on-error": "#ffffff",
+              "on-primary-container": "#c8daff",
+              "secondary-fixed": "#ffdad6",
+              "surface-container-low": "#f2f3fd",
+              "on-secondary-fixed-variant": "#930010",
+              "surface-tint": "#005db6",
+              "surface-container": "#ededf7",
+              "surface": "#faf8ff",
+              "tertiary": "#005412",
+              "primary-fixed": "#d6e3ff",
+              "on-primary-fixed-variant": "#00468c",
+              "surface-container-high": "#e7e7f1",
+              "inverse-surface": "#2e3038",
+              "tertiary-fixed": "#a3f69c",
+              "surface-container-lowest": "#ffffff",
+              "surface-dim": "#d9d9e3",
+              "on-background": "#191b22"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-3 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md z-50 shadow-sm dark:shadow-none">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center p-2 rounded-xl hover:bg-slate-200/50 transition-colors active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-blue-700" data-icon="search">search</span>
+</button>
+<h1 class="text-2xl font-black tracking-tight text-blue-800 dark:text-blue-300 font-headline">ResQMap</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-6 mr-4">
+<span class="font-inter text-sm text-slate-600 cursor-pointer hover:bg-slate-200/50 px-3 py-1 rounded-lg">Map</span>
+<span class="font-inter text-sm text-slate-600 cursor-pointer hover:bg-slate-200/50 px-3 py-1 rounded-lg">Resources</span>
+<span class="font-inter text-sm text-blue-700 font-bold px-3 py-1 rounded-lg bg-blue-50">Reports</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest flex items-center justify-center border-2 border-primary/10">
+<img alt="User Profile" data-alt="close-up portrait of a professional emergency dispatcher with a calm expression in a modern high-tech office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpkEXVSpFvSw-YN3-VtPS0x24O_YzizdUohch4Iu6Fnmb44W6Y_SpVeOBHy9wcktWv8zTN4lGJoQAp5e0MIuGjQzyot-qz_yd91PbDmpt_Y1t_RHdkOExoxN5hrFcDaSMhbW8DzV3VP3B2PU0_viU-O1LhuZ-fJyDUon8ev_YE2Mahm_QqBFIbpgNqz-fky76OA7Rt3P4JA72xnaijlOwkMjE3Kmolc3QWPg27McngGQs2PpaglY5UeXt6H0DSTnaNbWFU2GICorM"/>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-28 px-4 md:px-8 max-w-7xl mx-auto space-y-8">
+<!-- Hero Action Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="lg:col-span-8 bg-surface-container-lowest p-8 rounded-xl relative overflow-hidden flex flex-col justify-between min-h-[300px] group transition-all duration-300">
+<div class="relative z-10">
+<h2 class="text-4xl font-black font-headline text-on-surface tracking-tight leading-tight mb-4">Immediate Hazard Reporting</h2>
+<p class="text-on-surface-variant max-w-md text-lg leading-relaxed">Your real-time data helps neighbors stay safe. Report road blocks, flooding, or structural damage instantly.</p>
+</div>
+<div class="mt-8 flex flex-col sm:flex-row gap-4 relative z-10">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-5 px-8 rounded-xl flex items-center justify-center gap-3 shadow-xl active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="report_problem" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="text-xl">Report New Incident</span>
+</button>
+<button class="bg-surface-container-high text-on-surface font-semibold py-5 px-8 rounded-xl hover:bg-surface-container-highest transition-colors active:scale-95">
+                        View Guidelines
+                    </button>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+</div>
+<div class="lg:col-span-4 bg-surface-container p-6 rounded-xl flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="font-headline font-bold text-xl">Active Alerts</h3>
+<span class="bg-secondary-container text-on-secondary-fixed text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">High Priority</span>
+</div>
+<div class="flex-1 rounded-xl overflow-hidden border-4 border-surface-container-lowest shadow-inner relative">
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="stylized top-down view of a dark topographical map with red glowing alert zones and digital grid overlays" data-location="City Center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfcVKDA85EuPQ3ZGKfEkMQmfbTGM8H2hTBL3JFia3K6KaK3lAJEcuI4VIEOXYJtgZ5EXotY88IufBtzT1AU0rPeaBg3atF6iMulU3YPGRNXvPdX1fk3Gxam2Wpct5cY8TswRrf0pvcTLvscgA9JQz7jUVvF6t7NjsnF3ZtWPobKbMlaeTBZrItmRb7HZ_ne8NneIy2LqD2K19_tGY3U6N9gEdFVa650lu4uqu0lrIHB78c1Nwi41CAcb8xi9iKou_UhiFqL_G93Qg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container/90 to-transparent flex items-end p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-bold text-sm">3 Hazards within 5km</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Dashboard Content -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Recent Incidents -->
+<section class="lg:col-span-2 space-y-6">
+<div class="flex items-baseline justify-between px-2">
+<h3 class="text-2xl font-black font-headline tracking-tight">Recent Incidents</h3>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:underline">
+                        Filter by Type <span class="material-symbols-outlined text-xs" data-icon="filter_list">filter_list</span>
+</button>
+<div class="flex items-center gap-2 ml-4 px-2 py-0.5 bg-red-50 text-red-600 rounded-full animate-pulse">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+<span class="text-[10px] font-black uppercase tracking-widest">Live Feed</span>
+</div></div>
+<div class="space-y-4">
+<!-- Incident Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl flex items-center gap-6 transition-all hover:translate-x-1 duration-200">
+<div class="w-16 h-16 rounded-xl bg-secondary-fixed flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant text-3xl" data-icon="flood" style="font-variation-settings: 'FILL' 1;">flood</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-lg text-on-surface">Flash Flood - Main St Underpass</h4>
+<span class="bg-secondary-container text-on-secondary-fixed px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest">Urgent</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1 mb-2">Significant water accumulation. Passage restricted to high-clearance vehicles only.</p>
+<div class="flex items-center gap-4">
+<span class="text-xs font-semibold text-outline flex items-center gap-1"><span class="material-symbols-outlined text-xs text-red-500 animate-pulse" data-icon="sensors">sensors</span> Just Now</span>
+<span class="text-xs font-semibold text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span> Sector 4G
+                                </span>
+</div>
+</div>
+</div>
+<!-- Incident Card 2 -->
+<div class="bg-surface-container-low p-5 rounded-xl flex items-center gap-6 transition-all hover:translate-x-1 duration-200">
+<div class="w-16 h-16 rounded-xl bg-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl" data-icon="block" style="font-variation-settings: 'FILL' 1;">block</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-lg text-on-surface">Downed Power Lines</h4>
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest">Stable</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1 mb-2">Lines across Oak Avenue near the library. Authorities notified.</p>
+<div class="flex items-center gap-4">
+<span class="text-xs font-semibold text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span> 1 hour ago
+                                </span>
+<span class="text-xs font-semibold text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span> West District
+                                </span>
+</div>
+</div>
+</div>
+<!-- Incident Card 3 -->
+<div class="bg-surface-container-low p-5 rounded-xl flex items-center gap-6 transition-all hover:translate-x-1 duration-200">
+<div class="w-16 h-16 rounded-xl bg-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-3xl" data-icon="dangerous" style="font-variation-settings: 'FILL' 1;">dangerous</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-lg text-on-surface">Hazardous Debris</h4>
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-0.5 rounded-full text-[10px] font-black uppercase tracking-widest">Monitored</span>
+</div>
+<p class="text-on-surface-variant text-sm line-clamp-1 mb-2">Large debris items on Highway 101 shoulder. Drive with caution.</p>
+<div class="flex items-center gap-4">
+<span class="text-xs font-semibold text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span> 3 hours ago
+                                </span>
+<span class="text-xs font-semibold text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span> Highway 101
+                                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Safe Zones -->
+<section class="space-y-6">
+<div class="px-2">
+<h3 class="text-2xl font-black font-headline tracking-tight">Designated Safe Zones</h3>
+</div>
+<div class="bg-tertiary-container/10 p-6 rounded-xl space-y-4">
+<!-- Safe Zone 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter">Verified Active</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h4 class="font-bold text-lg leading-tight">Civic Arena Relief Center</h4>
+<div class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="medical_services">medical_services</span>
+                            Medical, Food, Power available
+                        </div>
+<button class="mt-2 w-full py-3 rounded-lg border border-tertiary-container text-tertiary font-bold text-sm hover:bg-tertiary-container/5 transition-colors">
+                            Get Directions
+                        </button>
+</div>
+<!-- Safe Zone 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col gap-3 opacity-80">
+<div class="flex items-center justify-between">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-tighter">Verified Active</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h4 class="font-bold text-lg leading-tight">North View High School</h4>
+<div class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="bed">bed</span>
+                            Temporary shelter, Pet-friendly
+                        </div>
+<button class="mt-2 w-full py-3 rounded-lg border border-tertiary-container text-tertiary font-bold text-sm hover:bg-tertiary-container/5 transition-colors">
+                            Get Directions
+                        </button>
+</div>
+</div>
+<!-- Capacity Alert -->
+<div class="bg-on-surface p-6 rounded-xl text-surface">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="info">info</span>
+<h5 class="font-bold">Capacity Notice</h5>
+</div>
+<p class="text-sm opacity-80 mb-4">St. Jude Hospital Safe Zone is currently at 95% capacity. Please redirect to Civic Arena if possible.</p>
+<div class="w-full h-1.5 bg-surface/20 rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[95%]"></div>
+</div>
+</div>
+</section>
+</div><footer class="pt-8 pb-4 text-center border-t border-outline/10">
+<p class="text-xs font-semibold text-outline tracking-widest uppercase">
+    Founded by Pawan Singh
+  </p>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md rounded-t-2xl shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 group cursor-pointer hover:text-blue-600">
+<span class="material-symbols-outlined text-2xl" data-icon="map">map</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 group cursor-pointer hover:text-blue-600">
+<span class="material-symbols-outlined text-2xl" data-icon="medical_services">medical_services</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Resources</span>
+</div>
+<!-- ACTIVE TAB -->
+<div class="flex flex-col items-center justify-center text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-xl px-4 py-2 scale-98 transition-transform duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="report_problem" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 group cursor-pointer hover:text-blue-600">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

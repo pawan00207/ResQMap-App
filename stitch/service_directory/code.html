@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service Directory | ResQMap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;700;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#d9d9e3",
+                        "on-primary-fixed": "#001b3d",
+                        "surface-bright": "#faf8ff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface": "#faf8ff",
+                        "secondary-fixed": "#ffdad6",
+                        "on-surface": "#191b22",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2e3038",
+                        "surface-container": "#ededf7",
+                        "secondary-container": "#da3433",
+                        "on-secondary-fixed": "#410003",
+                        "tertiary": "#005412",
+                        "surface-container-low": "#f2f3fd",
+                        "secondary-fixed-dim": "#ffb3ac",
+                        "on-tertiary-container": "#9bee94",
+                        "background": "#faf8ff",
+                        "primary-fixed": "#d6e3ff",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-secondary-container": "#fffbff",
+                        "on-tertiary-fixed-variant": "#005312",
+                        "primary-container": "#005eb8",
+                        "on-surface-variant": "#424752",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#c8daff",
+                        "inverse-primary": "#a9c7ff",
+                        "outline-variant": "#c2c6d4",
+                        "surface-container-highest": "#e1e2ec",
+                        "tertiary-container": "#1d6e25",
+                        "surface-tint": "#005db6",
+                        "tertiary-fixed": "#a3f69c",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#727783",
+                        "surface-container-high": "#e7e7f1",
+                        "on-primary-fixed-variant": "#00468c",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#b6171e",
+                        "on-secondary-fixed-variant": "#930010",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#88d982",
+                        "inverse-on-surface": "#f0f0fa",
+                        "on-background": "#191b22",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e1e2ec",
+                        "primary": "#00478d",
+                        "on-tertiary-fixed": "#002204"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Public Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 backdrop-blur-md shadow-sm flex items-center justify-between px-4 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-blue-700 p-2 hover:bg-slate-100 transition-colors active:scale-95">menu</button>
+<span class="text-xl font-black tracking-tight text-blue-800">ResQMap</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<nav class="flex items-center space-x-6 text-sm font-semibold font-headline">
+<a class="text-slate-600 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors" href="#">Home</a>
+<a class="text-slate-600 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors" href="#">Map</a>
+<a class="text-blue-700 border-b-2 border-blue-700 px-3 py-2" href="#">Directory</a>
+<a class="text-slate-600 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors" href="#">Learn</a>
+</nav>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-blue-700 p-2 hover:bg-slate-100 transition-colors active:scale-95">notifications</button>
+<div class="h-8 w-8 rounded-full bg-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a professional male doctor in high-key studio lighting with a calm and confident expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6CFk1SJkJIXsHM-XgWw42_89lcm2HWsrRg3GK1LMM_-Q5BYAn0NxQ32-vx2s8ITsbH6Oh0uzmvo7qI4_Bz94VhwQh8hTsZXkptOOE8PNmTiZZumKkUO85V5hv4Rkp0uv6gxbur5RsV7MgKbjiKCuBU6TnGIn9WyEVq7NkcIame99CU0o8kLBSbFhyTHuFad28wY4um6yYjC5HBE40Vr0XFw1B9_OmPE_qem0yb1reNNBdIQKV6ofEkDm0aD2j0_VB7CsUyLKrayc"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Hero Section & Search -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-2 block">Sentinel Archive</span>
+<h1 class="text-4xl md:text-5xl font-black text-on-surface tracking-tight leading-tight">Emergency <br/>Service Directory</h1>
+<p class="text-on-surface-variant mt-4 max-w-md font-medium">Find verified essential services nearby. Rapid response mapping founded by Pawan Singh.</p>
+</div>
+<div class="w-full md:w-96">
+<div class="relative group">
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container border-none rounded-xl focus:ring-2 focus:ring-primary/20 transition-all text-on-surface placeholder:text-outline font-medium" placeholder="Search facilities, services..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary">search</span>
+</div>
+</div>
+</div>
+<!-- Interactive Filters -->
+<div class="flex flex-wrap gap-3 items-center">
+<button class="px-5 py-2.5 rounded-full bg-primary text-on-primary text-sm font-bold flex items-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">apps</span>
+                    All Services
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm text-secondary">medical_services</span>
+                    Hospital
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm text-primary">local_police</span>
+                    Police
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm text-orange-600">fire_truck</span>
+                    Fire
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm text-tertiary">pill</span>
+                    Pharmacy
+                </button>
+<button class="px-5 py-2.5 rounded-full bg-surface-container-low text-on-surface-variant text-sm font-semibold flex items-center gap-2 hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm text-blue-400">home_work</span>
+                    Shelter
+                </button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-xs font-bold text-outline-variant uppercase tracking-tighter">Sort by:</span>
+<select class="bg-transparent border-none text-sm font-bold text-primary focus:ring-0 cursor-pointer">
+<option>Distance</option>
+<option>Rating</option>
+<option>Availability</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Bento Grid of Services -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1: Hospital -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-secondary-container/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">local_hospital</span>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Open 24/7</span>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">City General Hospital</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                    0.8 miles away
+                </p>
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-orange-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.9</span>
+<span class="text-xs text-outline font-medium ml-1">(1.2k reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-10 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold hover:brightness-110 active:scale-[0.98] transition-all">Call Now</button>
+<button class="w-10 h-10 border border-outline-variant/30 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm">directions</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Police -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-primary-container/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">local_police</span>
+</div>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Verified</span>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">Central Precinct</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                    1.2 miles away
+                </p>
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-orange-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.7</span>
+<span class="text-xs text-outline font-medium ml-1">(840 reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-10 bg-primary text-on-primary rounded-lg text-sm font-bold hover:brightness-110 active:scale-[0.98] transition-all">Call Now</button>
+<button class="w-10 h-10 border border-outline-variant/30 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm">directions</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Fire -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-secondary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">fire_truck</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">Station 42 Fire Dept</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                    2.5 miles away
+                </p>
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-orange-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">5.0</span>
+<span class="text-xs text-outline font-medium ml-1">(310 reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-10 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold hover:brightness-110 active:scale-[0.98] transition-all">Call Now</button>
+<button class="w-10 h-10 border border-outline-variant/30 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm">directions</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Pharmacy -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-tertiary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">medical_information</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">Evergreen Pharmacy</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                    0.5 miles away
+                </p>
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-orange-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.5</span>
+<span class="text-xs text-outline font-medium ml-1">(215 reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-10 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold hover:brightness-110 active:scale-[0.98] transition-all">Call Now</button>
+<button class="w-10 h-10 border border-outline-variant/30 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm">directions</span>
+</button>
+</div>
+</div>
+<!-- Card 5: Shelter -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-blue-100 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-blue-600" style="font-variation-settings: 'FILL' 1;">home_work</span>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">High Capacity</span>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">Refuge Point Shelter</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                    3.1 miles away
+                </p>
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-orange-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.8</span>
+<span class="text-xs text-outline font-medium ml-1">(92 reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-10 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold hover:brightness-110 active:scale-[0.98] transition-all">Call Now</button>
+<button class="w-10 h-10 border border-outline-variant/30 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm">directions</span>
+</button>
+</div>
+</div>
+<!-- Card 6: Hospital -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-secondary-container/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">Southside ER Center</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                    1.9 miles away
+                </p>
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-orange-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.3</span>
+<span class="text-xs text-outline font-medium ml-1">(450 reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-10 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold hover:brightness-110 active:scale-[0.98] transition-all">Call Now</button>
+<button class="w-10 h-10 border border-outline-variant/30 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm">directions</span>
+</button>
+</div>
+</div>
+<!-- Card 7: Pharmacy -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-tertiary/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">medication</span>
+</div>
+<span class="bg-secondary-container/20 text-secondary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Low Stock</span>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">MediLife Pharmacy</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                    0.2 miles away
+                </p>
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-orange-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.1</span>
+<span class="text-xs text-outline font-medium ml-1">(128 reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-10 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold hover:brightness-110 active:scale-[0.98] transition-all">Call Now</button>
+<button class="w-10 h-10 border border-outline-variant/30 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm">directions</span>
+</button>
+</div>
+</div>
+<!-- Card 8: Police -->
+<div class="group bg-surface-container-lowest p-5 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.08)] transition-all duration-300 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<div class="h-12 w-12 bg-primary-container/10 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+</div>
+<h3 class="font-headline font-bold text-lg text-on-surface mb-1 group-hover:text-primary transition-colors">Rapid Response Unit</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                    4.5 miles away
+                </p>
+<div class="flex items-center gap-1 mb-6">
+<span class="material-symbols-outlined text-orange-400 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold">4.6</span>
+<span class="text-xs text-outline font-medium ml-1">(52 reviews)</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-10 bg-primary-container text-on-primary-container rounded-lg text-sm font-bold hover:brightness-110 active:scale-[0.98] transition-all">Call Now</button>
+<button class="w-10 h-10 border border-outline-variant/30 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary text-sm">directions</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer / Identity -->
+<footer class="mt-20 border-t border-outline-variant/10 pt-10 text-center">
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-[0.2em] mb-4">
+<span class="h-[1px] w-8 bg-primary/30"></span>
+                    ResQMap
+                    <span class="h-[1px] w-8 bg-primary/30"></span>
+</div>
+<p class="text-outline font-medium text-sm">Empowering communities through accessible data transparency.</p>
+<p class="text-on-surface-variant font-bold text-xs mt-2 uppercase tracking-widest">Founded by Pawan Singh</p>
+<div class="mt-8 flex gap-6 text-xs font-bold text-outline uppercase tracking-wider">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">API Access</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-20 px-6 flex justify-around items-center z-50 pb-safe bg-slate-50/90 backdrop-blur-xl rounded-t-2xl border-t border-slate-200/20 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] md:hidden">
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-70 hover:opacity-100 transition-all active:scale-90">
+<span class="material-symbols-outlined">home</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-blue-700 scale-110 active:scale-90 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">import_contacts</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Directory</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-70 hover:opacity-100 transition-all active:scale-90">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Alerts</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-500 opacity-70 hover:opacity-100 transition-all active:scale-90">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-semibold tracking-wide uppercase">Profile</span>
+</button>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed right-6 bottom-24 md:bottom-10 bg-primary h-14 w-14 rounded-2xl flex items-center justify-center text-on-primary shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all z-40 group">
+<span class="material-symbols-outlined group-hover:rotate-12 transition-transform">add_alert</span>
+</button>
+</body></html>

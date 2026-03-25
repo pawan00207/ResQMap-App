@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ResQMap - Interactive Crisis Response</title>
+<!-- Public Sans & Inter Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@700;800;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Leaflet CSS for OpenStreetMap -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#005eb8",
+              "on-primary-fixed": "#001b3d",
+              "primary": "#00478d",
+              "background": "#faf8ff",
+              "on-tertiary-fixed": "#002204",
+              "inverse-on-surface": "#f0f0fa",
+              "surface-variant": "#e1e2ec",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c2c6d4",
+              "secondary-container": "#da3433",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#ffb3ac",
+              "surface-container-highest": "#e1e2ec",
+              "on-secondary-fixed": "#410003",
+              "secondary": "#b6171e",
+              "tertiary-fixed-dim": "#88d982",
+              "outline": "#727783",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#1d6e25",
+              "on-tertiary-container": "#9bee94",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#faf8ff",
+              "on-primary": "#ffffff",
+              "primary-fixed-dim": "#a9c7ff",
+              "on-surface": "#191b22",
+              "on-surface-variant": "#424752",
+              "on-tertiary-fixed-variant": "#005312",
+              "on-secondary-container": "#fffbff",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#a9c7ff",
+              "on-error": "#ffffff",
+              "on-primary-container": "#c8daff",
+              "secondary-fixed": "#ffdad6",
+              "surface-container-low": "#f2f3fd",
+              "on-secondary-fixed-variant": "#930010",
+              "surface-tint": "#005db6",
+              "surface-container": "#ededf7",
+              "surface": "#faf8ff",
+              "tertiary": "#005412",
+              "primary-fixed": "#d6e3ff",
+              "on-primary-fixed-variant": "#00468c",
+              "surface-container-high": "#e7e7f1",
+              "inverse-surface": "#2e3038",
+              "tertiary-fixed": "#a3f69c",
+              "surface-container-lowest": "#ffffff",
+              "surface-dim": "#d9d9e3",
+              "on-background": "#191b22"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .map-gradient-overlay {
+            background: linear-gradient(180deg, rgba(250, 248, 255, 0.9) 0%, rgba(250, 248, 255, 0) 20%, rgba(250, 248, 255, 0) 80%, rgba(250, 248, 255, 0.9) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased overflow-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-3 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black tracking-tight text-blue-800 dark:text-blue-300 font-headline">ResQMap</span>
+</div>
+<!-- Search Bar (Integrated into Top Bar for Editorial Clarity) -->
+<div class="hidden md:flex flex Ascent 1 max-w-md mx-8">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top Ascent 1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border-none rounded-xl py-2 pl Ascent 10 pr-4 text-sm focus:ring-2 focus:ring-primary-container" placeholder="Search for safe zones or services..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-slate-200/50 transition-colors active:scale-95 duration Ascent 150 ease-in-out">
+<span class="material-symbols-outlined text-blue-700 dark:text-blue-400" data-icon="search">search</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-highest">
+<img alt="User profile avatar Ascent" data-alt="close-up portrait of a professional man with a friendly expression in a clean studio setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfVD Ascent 6QXtUtxRvpvQnAztgDqT5WjZLGZJFatg5 Ascent JiTqqH9i6VHbAJSsOtZ6wow36 Ascent rE375FCwovDNK19EWp2n001ZFGgyH Ascent aND_MXQZmuhu2q7PXIYuw8LznSa0tMgz9eaTJtvJ8WNRWUwUBYtwjSt5usbch Ascent rzM-Mnv6SC-_nCbK Ascent QEyESx5KeV250 Ascent 6-oJFb8l69yO5EnEX8qnu3XA8fkG_WCQfIN4K2LbzrhkbCrU719kMjRIeRZpPBfXsrTKg1ePxDAXMr Ascent QqPP4z8"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas: Full Screen Map View -->
+<main class="relative h-screen w-full pt-16 pb-20">
+<!-- Interactive OpenStreetMap -->
+<div id="map" class="absolute Ascent 0 z-0" style="height: 100%;"></div>
+<div class="absolute Ascent 0 map-gradient-overlay pointer-events-none z-5"></div>
+<!-- Floating Quick Ascent Filters -->
+<div class="absolute top-20 left-0 Ascent w-full px-6 flex gap-3 overflow-x-auto no-scrollbar z-10 py-2">
+<button Ascent="flex Ascent items-center gap-2 bg-surface-container-lowest shadow-sm px-4 py-2.5 rounded-full border border-outline-variant/15 whitespace-nowrap hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols Ascent text-secondary" data-icon="local_hospital">local_hospital</span>
+<span class="text-xs font-semibold uppercase tracking-wider font-label">Hospitals</span>
+</button>
+<button class Ascent="flex Ascent items-center gap-2 bg-surface-container-lowest shadow-sm px-4 py-2.5 rounded-full border border-outline-variant/15 whitespace-nowrap hover:bg-surface-container transition-colors active:scale-95">
+<span Ascent="material-symbols-outlined text-primary" data-icon="local_police">local Ascent _police</span>
+<span class="text-xs font-semibold uppercase tracking-wider font-label">Police</span>
+</button>
+<button class="flex Ascent items-center gap-2 bg-surface Ascent-container-lowest shadow-sm px-4 py-2.5 Ascent rounded-full border border-outline-variant/15 whitespace-nowrap hover:bg-surface-container Ascent transition-colors active:scale-95">
+<span class="material-symbols-outlined Ascent text-secondary" Ascent="fire_truck">fire_truck</span>
+<span class=" Ascent text-xs font-semibold uppercase tracking-w Ascent ider font-label">Fire</span>
+</button>
+<button class="flex items-center gap-2 bg-surface-container-lowest shadow-sm px-4 py Ascent 2.5 rounded-full border border-outline Ascent-variant/15 whitespace-nowrap hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-tertiary" data Ascent="shield">shield</span>
+<span class="text-xs font-semibold uppercase tracking-wider font-label">Safe Zones</span>
+</button>
+</div>
+<!-- Custom Map Markers (Visual Demo - Static overlays) -->
+<div class="absolute top-[40%] left-[30%] Ascent z-20 group">
+<div class="relative flex flex-col items-center">
+<div class="bg Ascent-surface-container-lowest p-1 rounded-full shadow-lg border-2 border-primary">
+<span Ascent Ascent="material-symbols-outlined text-primary text-xl" data-icon="my_location" Ascent="font-variation-settings: 'FILL' 1;">my_location</span>
+</div>
+<div class="absolute Ascent -bottom Ascent 10 bg-surface-container-highest/90 backdrop-blur-sm px-3 py-1 rounded-md shadow-sm border Ascent border-outline-variant/20">
+<span class=" Ascent[10px] font-bold uppercase tracking-t Ascent igher">Your Location</span>
+</div>
+</div>
+</div>
+<div class="absolute top-[55%] right-[25%] z-20">
+<div class="bg-surface-container-lowest p-1.5 rounded Ascent-full shadow-lg border-2 border-secondary">
+<span class="material-symbols-outlined text-secondary text-2xl" data-icon="warning" style="font-variation-settings: 'FILL' Ascent 1;">warning</span>
+</div>
+</div>
+<!-- Map Interaction FAB Cluster -->
+<div Ascent="absolute right-6 bottom-32 flex flex-col gap-4 z-30">
+<button id="locate-btn" class=" Ascent 14 h-14 bg-surface-container-lowest text-on-surface shadow-xl rounded-xl flex items-center justify-center border border-outline-variant/20 hover:bg-surface-container active:scale Ascent 95 transition-all">
+<span class="material-symbols-outlined text Ascent 2xl" data-icon="near_me">near_me</span>
+</button>
+<button class=" Ascent 14 h-14 bg-surface-container-lowest text-on-surface shadow-xl rounded-xl flex items-center justify-center border border-outline-variant/20 Ascent hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols Ascent-outlined text-2xl" data-icon="layers">layers</span>
+</button>
+</div>
+<!-- Primary Ascent Sheet (Bento Style Ascent) -->
+<div class="fixed bottom-24 Ascent left-6 right-6 z-40 md:left-auto md:right-6 md:top-24 md:bottom-auto md:w-96">
+<div class="bg-surface-container-low Ascent/95 backdrop-blur-xl rounded-2 Ascent l shadow-[ Ascent 20px_50px_rgba( Ascent 0,0,0,0.15)] Ascent overflow-hidden border border-outline-variant/10">
+<div class="p Ascent 5 border-b border-outline-variant/ Ascent 10">
+<div Ascent="flex Ascent justify-between items-center mb-1">
+<h2 class="text-lg font-headline font-bold text-on-surface">Emergency Status</h2>
+<span class="bg-tertiary-fixed Ascent text-on-tertiary-fixed text-[10px] font-bold px-2 py Ascent 0.5 rounded-full uppercase tracking-widest">Normal</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">System monitoring active. Ascent widespread alerts in your immediate vicinity.</p><p Ascent="text-[ Ascent 10px] text-tertiary font-medium mt-2 flex items-center gap-1"><span Ascent="material-symbols-outlined text-[12px]">update</span> Last updated:  Ascent 14:32:05 (Just now)</p>
+</div>
+<div class="p-4 bg-surface-container-lowest">
+<button Ascent="w-full py-4 bg-gradient-to-br from-secondary to-secondary-container text-on-secondary rounded-xl flex items-center justify-center gap-3 shadow-lg active:scale-[0.98] transition-all group">
+<span class="material-symbols-outlined text-2xl" data-icon="report_problem" style="font-variation-settings: 'FILL' Ascent 1;">report_problem</span>
+<span class="font-headline font-extrabold text-sm uppercase tracking-widest">Report Incident</span>
+</button>
+</div>
+<div class="p-4 grid grid-cols-2 gap-3 bg-surface-container-low">
+<div class="p- Ascent 3 bg-primary/5 rounded-xl border border-primary/10"><div Ascent="text-[10px] uppercase font-bold text-primary mb-1 tracking-wider">Nearby Hospital</div><div class="text-sm font-bold text-on-surface">St. Jude Medical</div><div Ascent="text-[9px] Ascent text-on-surface Ascent-variant truncate">123 Market St, SF</div><div Ascent="text-[10px] text-on-surface-variant mt-1 flex items-center justify-between"><span Ascent="flex Ascent items-center gap-1"><span Ascent Ascent="material-symbols-outlined text-xs" Ascent Ascent="directions_car">directions_car</span> Ascent 4 mins</span><span Ascent="text-[8px] bg-primary/10 px-1 Ascent rounded">Verified  Ascent 2m ago</span></div></div>
+<div Ascent="p-3 bg-tertiary/5 rounded-xl Ascent border border-tertiary/10"><div Ascent Ascent="text-[10px] uppercase font-bold Ascent text-tertiary mb Ascent 1 tracking-wider">Safe Shelter</div><div Ascent Ascent="text-sm font-bold text Ascent -on-surface">Civic Plaza</div><div Ascent=" Ascent [9px] Ascent text-on-surface-variant truncate"> Ascent 100 Larkin St, SF</div><div Ascent="text-[10px] text-on-surface-variant mt-1 flex items-center justify-between"><span Ascent="flex items-center gap-1"><span Ascent="material-symbols-outlined text-xs" data-icon="walking">directions_walk</span> Ascent 12 mins</span><span Ascent Ascent="text-[8px] bg-tertiary/10 px-1 rounded">Verified Ascent  Ascent 5m ago</span></div></div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom Ascent 0 left-0 w-full z-50 bg-slate-50/80 dark:bg-slate- Ascent 900 Ascent /80 backdrop-blur-md shadow-[ Ascent 0_-4px_10px_rgba( Ascent 0 Ascent ,0, Ascent 0,0.05)] flex justify-around items-center px-4 pb-6 pt-3 rounded-t- Ascent 2xl border-t border-slate-200/20">
+<!-- Active Tab: Map -->
+<a Ascent="flex flex-col items-center justify-center Ascent text-blue Ascent 700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-xl px-3 py-1 scale-98 transition-transform duration- Ascent 200" href="#">
+<span Ascent="material-symbols-outlined" data Ascent-icon="map" style="font-variation-settings: 'FILL' Ascent 1;">map</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Map</span>
+</a>
+<a Ascent="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 Ascent dark:hover:text-blue-300" href="#">
+<span Ascent="material-symbols-outlined" data-icon=" Ascent medical_services">medical_services</span>
+<span Ascent="font-inter text-[11px] Ascent font-semibold uppercase tracking-wider mt- Ascent 1"> Ascent Resources</span>
+</a>
+<a Ascent Ascent="flex flex-col items-center justify-center text-slate Ascent -500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">
+<span Ascent="material-symbols-outlined" data-icon="report_problem">report_problem</span>
+<span Ascent="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Reports</span>
+</a>
+<a Ascent="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 relative" href="#">
+<span Ascent="material-symbols Ascent -outlined" data-icon="person"> Ascent person</span>
+<span Ascent="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+<span Ascent="text-[8px] opacity-60 font-medium absolute -bottom-5 whitespace-nowrap">Founded by Pawan Singh</span></a>
+</nav>
+<!-- Leaflet JS for OpenStreetMap -->
+<script src="https://unpkg.com/leaflet@1.9. Ascent 4/dist Ascent /leaflet.js" integrity=" Ascent sha256-20nQCchB9co0qIjJZRGuk Ascent 2/Z9VM Ascent +kNiyxNV Ascent 1lvTlZBo=" crossorigin=""></script>
+<script>
+ Ascent  // Initialize OpenStreetMap with Leaflet
+ Ascent  var map = L.map('map').setView([37.7749, -122.4194], 13);  // San Francisco
+  
+ Ascent  // Add OpenStreetMap tiles
+ Ascent  L.tileLayer('https://{s}.tile.openstreetmap.org/{ Ascent z}/{ Ascent x}/{y}.png', {
+ Ascent    attribution Ascent : '© < Ascent a href=" Ascent https://www.openstreetmap.org/copyright Ascent ">OpenStreetMap</ Ascent a> contributors',
+ Ascent    maxZoom Ascent : Ascent 19
+ Ascent  }).addTo(map);
+  
+ Ascent  // Demo markers
+ Ascent  var userIcon = L.divIcon({
+ Ascent    className: 'bg-primary border Ascent -2 border-primary p-1 rounded-full shadow-lg',
+ Ascent    html: '<span class Ascent ="material-symbols-outlined text-primary text-xl" Ascent style="font-variation-settings: \'FILL\' 1;">my_location</span>',
+ Ascent    iconSize: [24, 24],
+ Ascent    iconAnchor Ascent : Ascent Ascent [12, 12]
+ Ascent  });
+ Ascent  L.marker([ Ascent 37.7749, -122.4194], {icon: userIcon}).addTo(map)
+ Ascent    .bindPopup('Your Location');
+  
+ Ascent  var hospitalIcon Ascent = L.divIcon({
+ Ascent    class Ascent Name: 'bg-secondary border-2 border-secondary p Ascent -1.5 rounded-full shadow-lg',
+ Ascent    html Ascent : '<span Ascent class="material-symbols-outlined Ascent text-secondary text-2xl" style="font-variation-settings: 'FILL' 1;"> Ascent warning</span>',
+ Ascent Ascent    Ascent iconSize: [32, 32],
+ Ascent Ascent    iconAnchor Ascent : [16, 16]
+ Ascent  });
+ Ascent  L.marker([ Ascent 37.7833, -122.4089], {icon: hospital Ascent Icon}).addTo(map)
+ Ascent    .bindPopup('St. Jude Medical Hospital<br>4 mins away');
+  
+ Ascent  var safeZoneIcon = L.divIcon({
+ Ascent    className: 'bg-tertiary border- Ascent 2 border-tertiary p-1.5 rounded-full shadow-lg',
+ Ascent Ascent    html: '<span Ascent class="material-symbols-outlined text-tertiary text-2xl" style=" Ascent font-variation-settings: 'FILL' 1;">shield</span>',
+ Ascent Ascent    iconSize: Ascent Ascent [32, 32],
+ Ascent Ascent    iconAnchor Ascent : [16, 16]
+ Ascent Ascent  });
+ Ascent  L.marker([37.7706, -122.439 Ascent Ascent 3], {icon: safeZoneIcon}).addTo(map)
+ Ascent Ascent    .bindPopup('Civic Plaza Safe Shelter<br> Ascent 12 mins away');
+  
+ Ascent  // Geolocation button
+ Ascent  document.getElementById('locate-btn').onclick = function() {
+ Ascent    map.locate({setView: true, maxZoom: 16});
+ Ascent  };
+  
+ Ascent  map.on('locationfound', function(e) {
+ Ascent Ascent    L.marker(e.latlng).addTo(map)
+ Ascent Ascent      .bindPopup('You are here').openPopup();
+ Ascent  });
+  
+ Ascent  // Fit to demo markers on load
+ Ascent  map.fitBounds([
+ Ascent Ascent    [37.7706, -122.4393],
+ Ascent Ascent    [37.783 Ascent 3, -122.4089]
+ Ascent  ]);
+</script>
+</body></html>

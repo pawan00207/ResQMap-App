@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#005eb8",
+              "on-primary-fixed": "#001b3d",
+              "primary": "#00478d",
+              "background": "#faf8ff",
+              "on-tertiary-fixed": "#002204",
+              "inverse-on-surface": "#f0f0fa",
+              "surface-variant": "#e1e2ec",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c2c6d4",
+              "secondary-container": "#da3433",
+              "error": "#ba1a1a",
+              "secondary-fixed-dim": "#ffb3ac",
+              "surface-container-highest": "#e1e2ec",
+              "on-secondary-fixed": "#410003",
+              "secondary": "#b6171e",
+              "tertiary-fixed-dim": "#88d982",
+              "outline": "#727783",
+              "error-container": "#ffdad6",
+              "tertiary-container": "#1d6e25",
+              "on-tertiary-container": "#9bee94",
+              "on-tertiary": "#ffffff",
+              "surface-bright": "#faf8ff",
+              "on-primary": "#ffffff",
+              "primary-fixed-dim": "#a9c7ff",
+              "on-surface": "#191b22",
+              "on-surface-variant": "#424752",
+              "on-tertiary-fixed-variant": "#005312",
+              "on-secondary-container": "#fffbff",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#a9c7ff",
+              "on-error": "#ffffff",
+              "on-primary-container": "#c8daff",
+              "secondary-fixed": "#ffdad6",
+              "surface-container-low": "#f2f3fd",
+              "on-secondary-fixed-variant": "#930010",
+              "surface-tint": "#005db6",
+              "surface-container": "#ededf7",
+              "surface": "#faf8ff",
+              "tertiary": "#005412",
+              "primary-fixed": "#d6e3ff",
+              "on-primary-fixed-variant": "#00468c",
+              "surface-container-high": "#e7e7f1",
+              "inverse-surface": "#2e3038",
+              "tertiary-fixed": "#a3f69c",
+              "surface-container-lowest": "#ffffff",
+              "surface-dim": "#d9d9e3",
+              "on-background": "#191b22"
+            },
+            fontFamily: {
+              "headline": ["Public Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .sentinel-shadow {
+        box-shadow: 0 4px 32px -4px rgba(25, 27, 34, 0.08);
+      }
+      .cta-gradient {
+        background: linear-gradient(135deg, #00478d 0%, #005eb8 100%);
+      }
+      .cta-gradient:hover {
+        background: linear-gradient(180deg, #00478d 0%, #005eb8 100%);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-3 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm dark:shadow-none z-50">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-200/50 transition-colors active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">arrow_back</span>
+</button>
+<h1 class="text-2xl font-black tracking-tight text-blue-800 dark:text-blue-300 font-headline">ResQMap</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-200/50 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">search</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with a friendly expression in a clean studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUYBwAAcWK3EKh9g64wN31O-2MgJEsCgx2XedGHLnjiRJcRpOp7VoaE5kWlKTA1--NN-yhBGer1vi89bw8_iycqwBKqo5WcE1JvIY95md-et4-FaoLuH_ImOviA6HQylodxNiBt-LPauqnwlbhNKkMZoOX-lKu1b5w4NdZ4xcC9JE6cJOki98l1mkrqGvqXYUm-u2GXjxvLlK82DbTCVYcsiG2yTvq3nEmbEy89TsrNQySfYYn7z3zTx7HNDyFpDkT361FOtLk7Lw"/>
+</div>
+</div>
+</header>
+<main class="pt-20 px-4 md:px-8 max-w-5xl mx-auto space-y-8">
+<!-- Hero Section: Location Identity -->
+<section class="relative rounded-xl overflow-hidden sentinel-shadow bg-surface-container-lowest">
+<div class="h-64 md:h-80 w-full relative">
+<img class="w-full h-full object-cover" data-alt="modern hospital building exterior with large glass windows and emergency entrance in clean daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2FO4SysWuc-6-Xlbhc0PR6UdqbOr_KK6cTm7NSP_k50Nan-wvzU_7-nf3yVrA1eqyKrFBP426zeg8yYEShAMEGQY_D5uq2BZhS1kqOWxb1Lkz4CvPBrUnGvxTU9G-T2eGrNuvo3RwrpTMDreFNEWBhQ4euHl8bNf1WLto3tuS0UNgd1S9ToaQWOuwOBl83lILhv0ApTp38Pq6kfyn0Ywx6cI9XtJnQWtoOdzX4JzNCIGFPanpKpl7Ea4F4hz1kWBCsVuedJzgCu8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<div class="flex flex-wrap items-center gap-3 mb-2">
+<span class="px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-tertiary-fixed text-on-tertiary-fixed">Open 24/7</span>
+<span class="px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-primary-container text-on-primary">Medical Center</span>
+</div>
+<h2 class="text-3xl md:text-5xl font-black text-white font-headline leading-tight">St. Jude Emergency Center</h2>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout for Details -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Left Column: Core Info -->
+<div class="md:col-span-2 space-y-6">
+<!-- Navigation & Action Card -->
+<div class="p-8 rounded-xl bg-surface-container-low sentinel-shadow space-y-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="space-y-2">
+<p class="text-sm font-bold uppercase tracking-widest text-on-surface-variant font-label">Current Address</p>
+<p class="text-lg font-medium text-on-surface leading-relaxed">1248 Medical District Way, Suite 400<br/>Central City, Metro East 90210</p>
+</div>
+<button class="cta-gradient text-on-primary px-8 py-4 rounded-xl flex items-center justify-center gap-3 font-bold text-lg active:scale-95 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">directions</span>
+                            Navigate
+                        </button>
+</div>
+</div>
+<!-- Accessibility Features -->
+<div class="p-8 rounded-xl bg-surface-container-lowest sentinel-shadow">
+<h3 class="text-xl font-bold font-headline mb-6 text-on-surface">Accessibility Profile</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary mt-1">accessible</span>
+<div>
+<p class="font-bold text-on-surface">Step-free access</p>
+<p class="text-sm text-on-surface-variant">Ramp and elevator access to all floors</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary mt-1">visibility</span>
+<div>
+<p class="font-bold text-on-surface">Tactile paving</p>
+<p class="text-sm text-on-surface-variant">Safe guidance for visual impairment</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary mt-1">hearing</span>
+<div>
+<p class="font-bold text-on-surface">Hearing Loops</p>
+<p class="text-sm text-on-surface-variant">T-coil compatible reception desks</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-xl bg-surface-container-low border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary mt-1">family_restroom</span>
+<div>
+<p class="font-bold text-on-surface">Universal Restrooms</p>
+<p class="text-sm text-on-surface-variant">Gender-neutral and accessible facilities</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Live User Updates -->
+<div class="space-y-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="text-xl font-bold font-headline text-on-surface">Live Community Intelligence</h3>
+<span class="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> Live
+                        </span>
+</div>
+<div class="space-y-4">
+<div class="p-6 rounded-xl bg-surface-container-high sentinel-shadow flex gap-4">
+<div class="w-10 h-10 shrink-0 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="profile portrait of a smiling woman with warm lighting and soft background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMtFbhZJKQ5A2eL-aGZH4PSy0JEEov4c2p6LgEK_J-M1tDUCVdvs7IvDrDYD_XR7KzdgDF-P3ZEjSHNVPaz-VSncPGmKw8dUY8yOzaOlA5itb6DSaf1o91peKLj49uW2ROajRdEPGKd1xAv3ADslZJLV4yUXgbg2JSRMZVgmEWgqlWGHMidcx0I0kdhQ1RkGTRrzOEkfXhGwJ0oDMm8kLiHzRze4pdqAogT9sb64tD6Woy1YocbazvNbzT2FgJF146CS_cZPcSulM"/>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-start">
+<p class="font-bold text-on-surface">Sarah J.</p>
+<span class="text-xs text-on-surface-variant">12 mins ago</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Just got here with my father. ER intake was super smooth. The north parking lot is currently full due to construction, so head straight for the underground deck if you're driving. Ramp is clear and salted.</p>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-[10px] font-bold uppercase tracking-tight text-on-tertiary-fixed">Verified Entry</span>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-high sentinel-shadow flex gap-4">
+<div class="w-10 h-10 shrink-0 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a man looking focused with a natural blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvi5JjUJgqOWgdtvtif_d1LZ9JBYJu4PzHRc5WQnGmh2zPV7lDuRgiUhqh4xll1C5-ubzHSmc2sTZLk2cF4pqq7gOxW-jYWJYEzW444hk1GyzZq8uVDlOD_e7hCVS36HD6Y0ns_s6Xo91N7MQ8zZXAafiMENqqroBOP9kzAHFnwM0otYwbB2gr_lKWX_7Qgzmm4X66QnfFbBe02k2aMoLjKmB3CvhSiTbkwnrkX1NhkBKp4hILzjVOPQS_QNar8XUq1QlpUjKjMhY"/>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex justify-between items-start">
+<p class="font-bold text-on-surface">Michael R.</p>
+<span class="text-xs text-on-surface-variant">1 hour ago</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Main elevator B is down for its monthly check. If you're coming from the Metro East station, use the 2nd Ave entrance for the quickest path to Cardiology. Stretcher access is only via Wing A right now.</p>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-[10px] font-bold uppercase tracking-tight text-on-secondary">Alert Update</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Map & Context -->
+<div class="space-y-6">
+<!-- Mini Map -->
+<div class="rounded-xl overflow-hidden sentinel-shadow h-64 md:h-80 bg-surface-container-high relative">
+<img class="w-full h-full object-cover" data-alt="clean minimal digital map interface showing city grid with subtle blue and grey tones" data-location="Chicago" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdcBPkEHSJJ7WJjIom9N6yvstlwG58NLEujSe0HxKIVpXLtg84IMVpPRdij-tvgMHFofU4FtwJgBf8_teSRgsxYSrUv2qkGQ-iEoQfNpGZ-3S2NfbmPce_xqdTSd5IEkkGcBEBFmG3YJojoL2hiJRYrwJor0KklOo9AYaHlU4gQePpUBvyXmOki1GsFxK9HLqgrU7zRDjxnrYfK9F7u0LXvvGJgNzoS89bh-O6uHpV2yJ2Tw-LihkqLnVHPfZqs_zQwh6Gcu-q39U"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-xl border-4 border-white">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 right-4 glass-effect bg-white/60 p-3 rounded-lg flex items-center justify-between">
+<span class="text-xs font-bold text-on-surface">ETA: 8 mins</span>
+<span class="text-xs font-bold text-primary">Traffic: Light</span>
+</div>
+</div>
+<!-- Contact Info Card -->
+<div class="p-8 rounded-xl bg-surface-container-lowest sentinel-shadow space-y-6">
+<h3 class="text-xl font-bold font-headline text-on-surface">Emergency Contact</h3>
+<div class="space-y-4">
+<a class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors group" href="tel:5550123">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">call</span>
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Direct Line</p>
+<p class="font-bold text-on-surface">(555) 123-4567</p>
+</div>
+</a>
+<div class="flex items-center gap-4 p-4 rounded-lg bg-surface-container-low">
+<span class="material-symbols-outlined text-primary">mail</span>
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">General Inquiry</p>
+<p class="font-bold text-on-surface">info@stjude-med.org</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 rounded-lg border-2 border-outline-variant text-on-surface-variant font-bold hover:bg-surface-variant transition-colors active:scale-95">
+                        Share Location
+                    </button>
+</div>
+<!-- Emergency Status Breakdown -->
+<div class="p-6 rounded-xl bg-secondary-container/10 border-l-4 border-secondary space-y-3">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+<p class="font-bold uppercase tracking-wider text-xs">Current Capacity Alert</p>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Trauma Ward 4 is currently at 85% capacity. Ambulances redirected to North Campus for non-critical cases.</p>
+</div>
+</div>
+</div>
+</main><footer class="max-w-5xl mx-auto px-4 py-8 text-center text-on-surface-variant/60 text-sm italic font-medium">
+    Founded by Pawan Singh
+</footer>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-md rounded-t-2xl border-t border-slate-200/20 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-700 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 rounded-xl px-3 py-1 scale-98" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Resources</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">
+<span class="material-symbols-outlined">report_problem</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[11px] font-semibold uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
